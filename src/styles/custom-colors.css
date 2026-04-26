@@ -1,0 +1,38 @@
+/* Custom JKC Brand Colors */
+:root {
+  --jkc-blue: #1769bc;
+  --jkc-blue-hover: #0f5aa3;
+  --jkc-blue-light: #2979d9;
+  --jkc-green: #76bc21;
+  --jkc-green-hover: #5a9119;
+  --jkc-green-light: #8fd32a;
+}
+
+/* Blue color utilities */
+.text-jkc-blue { color: var(--jkc-blue); }
+.text-jkc-blue-hover { color: var(--jkc-blue-hover); }
+.text-jkc-blue-light { color: var(--jkc-blue-light); }
+.bg-jkc-blue { background-color: var(--jkc-blue); }
+.bg-jkc-blue-hover { background-color: var(--jkc-blue-hover); }
+.bg-jkc-blue-light { background-color: var(--jkc-blue-light); }
+.border-jkc-blue { border-color: var(--jkc-blue); }
+
+/* Green color utilities */
+.text-jkc-green { color: var(--jkc-green); }
+.text-jkc-green-hover { color: var(--jkc-green-hover); }
+.text-jkc-green-light { color: var(--jkc-green-light); }
+.bg-jkc-green { background-color: var(--jkc-green); }
+.bg-jkc-green-hover { background-color: var(--jkc-green-hover); }
+.bg-jkc-green-light { background-color: var(--jkc-green-light); }
+.border-jkc-green { border-color: var(--jkc-green); }
+
+/* Hover effects */
+.hover\:text-jkc-blue:hover { color: var(--jkc-blue); }
+.hover\:text-jkc-blue-hover:hover { color: var(--jkc-blue-hover); }
+.hover\:bg-jkc-blue:hover { background-color: var(--jkc-blue); }
+.hover\:bg-jkc-blue-hover:hover { background-color: var(--jkc-blue-hover); }
+
+.hover\:text-jkc-green:hover { color: var(--jkc-green); }
+.hover\:text-jkc-green-hover:hover { color: var(--jkc-green-hover); }
+.hover\:bg-jkc-green:hover { background-color: var(--jkc-green); }
+.hover\:bg-jkc-green-hover:hover { background-color: var(--jkc-green-hover); }
