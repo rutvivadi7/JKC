@@ -11,17 +11,17 @@ const Quality: React.FC = () => {
       <Header isTransparent={true} />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[50vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img
-            src={IMAGES.GALLERY.CONSTRUCTION_7}
+            src={'images/gallery/jkc26.png'}
             alt="Quality construction work"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 text-white mt-16 px-8 sm:px-12 lg:px-20 xl:px-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Quality</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Quality</h1>
         </div>
       </section>
 
@@ -30,11 +30,11 @@ const Quality: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="px-8 sm:px-12 lg:px-20 xl:px-28 py-6 flex items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-blue-600 leading-tight mb-4">
-                At JKC, We Prioritize Doing Things the RIGHTPATH
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1769bc] leading-tight mb-4">
+                At JKC, We Prioritize Doing Things the RIGHTWAY
               </h2>
               <p className="text-gray-700 text-xl leading-relaxed mb-4">
-                <strong>RIGHTPATH</strong> is our Quality Management System (QMS) and it is our preferred framework for ensuring excellence in our operations. Our structured approach and comprehensive training empower our workforce to proactively maintain and improve quality in all aspects of our business. We adhere to all legal requirements and policies governing health and safety, sustainability, and codes of conduct for our employees and the contractors we hire.
+                 Quality Management System (QMS) is our preferred framework for ensuring excellence in our operations. Our structured approach and comprehensive training empower our workforce to proactively maintain and improve quality in all aspects of our business. We adhere to all legal requirements and policies governing health and safety, sustainability, and codes of conduct for our employees and the contractors we hire.
               </p>
               <p className="text-gray-700 text-xl leading-relaxed">
                 Our commitment is to meet our customers' expectations while maintaining a superior standard of execution. Our staff and personnel are highly qualified through experience and training. We recognize that quality is crucial to our success, and we will educate our employees to ensure our work meets our customers' satisfaction. We are proud of our teams and stand behind our work.
@@ -43,7 +43,7 @@ const Quality: React.FC = () => {
           </div>
           <div className="relative">
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_5}
+              src={'images/gallery/jkc1.png'}
               alt="Quality construction work"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}

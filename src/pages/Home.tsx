@@ -8,9 +8,9 @@ import Footer from '../components/Footer';
 import ServicesSection from '../components/ServicesSection';
 
 const HERO_SLIDES = [
-  IMAGES.GALLERY.CONSTRUCTION_1,
-  IMAGES.GALLERY.CONSTRUCTION_2,
-  IMAGES.GALLERY.CONSTRUCTION_3,
+  '/images/gallery/jkc16.png',
+  '/images/gallery/jkc13.png',
+  '/images/gallery/jkc15.png'
 ];
 
 const Home: React.FC = () => {
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
       {/* What We Stand For Section */}
       <section className="relative py-16 sm:py-20 lg:py-24">
         <img
-          src={IMAGES.GALLERY.CONSTRUCTION_7}
+          src={'images/gallery/jkc17.png'}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-700/95 via-blue-700/75 to-transparent"></div>

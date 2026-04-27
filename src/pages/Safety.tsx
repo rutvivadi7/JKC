@@ -16,23 +16,23 @@ const Safety: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[50vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_3}
+            src={'images/gallery/jkc25.png'}
             alt="Construction safety with workers and equipment"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 text-white mt-16 px-8 sm:px-12 lg:px-20 xl:px-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Safety</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Safety</h1>
         </div>
       </section>
 
       {/* Employee Health & Safety Section */}
       <section className="py-10 sm:py-12 bg-gray-100 px-8 sm:px-12 lg:px-20 xl:px-28">
-          <h2 className="text-4xl font-bold text-blue-600 mb-4">Employee Health & Safety</h2>
+          <h2 className="text-4xl font-bold text-[#1769bc] mb-4">Employee Health & Safety</h2>
           <p className="text-gray-700 text-xl leading-relaxed mb-6">
             At JKC, safety is more than rules and procedures – it's a mindset. We are focused on training, engaging and empowering all our employees to recognize and mitigate hazards, so everyone gets home safely.
           </p>
@@ -66,7 +66,7 @@ const Safety: React.FC = () => {
             <div className="py-4" style={{minHeight: '300px'}}>
               <div className="px-6 sm:px-10 lg:px-16">
                 <div className="mb-3"></div>
-                <h3 className="text-3xl font-bold text-blue-600 mb-4">Commit & Lead</h3>
+                <h3 className="text-3xl font-bold text-[#1769bc] mb-4">Commit & Lead</h3>
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Our executive and managerial leadership demonstrate their commitment to our safety program and supporting initiatives through various tools and actions, for example:
                 </p>
@@ -84,7 +84,7 @@ const Safety: React.FC = () => {
             <div className="py-4" style={{minHeight: '300px'}}>
               <div className="px-6 sm:px-10 lg:px-16">
                 <div className="mb-3"></div>
-                <h3 className="text-3xl font-bold text-blue-600 mb-4">Train & Engage</h3>
+                <h3 className="text-3xl font-bold text-[#1769bc] mb-4">Train & Engage</h3>
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Effective, consistent and deliberate communication is a critical component of our safety program. As an integral part of our safety process, all our team members, whether in the office or in the field, are required to undergo mandatory safety training. They are actively engaged in training, reporting and auditing safety programs and protocols daily.
                 </p>
@@ -105,7 +105,7 @@ const Safety: React.FC = () => {
             {/* Identify & Mitigate */}
             <div className="py-4">
               <div className="px-6 sm:px-10 lg:px-16">
-                <h3 className="text-3xl font-bold text-blue-600 mb-4">Identify & Mitigate</h3>
+                <h3 className="text-3xl font-bold text-[#1769bc] mb-4">Identify & Mitigate</h3>
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Appropriate risk mitigation involves identifying potential risks to a project and implementing strategies to help prevent or reduce the risk. We employ several techniques through our on-site safety protocols to ensure we are continuously evaluating and minimizing our risk.
                 </p>
@@ -116,7 +116,7 @@ const Safety: React.FC = () => {
             <div className="py-4">
               <div className="px-6 sm:px-10 lg:px-16">
                 <div className="mb-3"></div>
-                <h3 className="text-3xl font-bold text-blue-600 mb-4">Evaluate & Improve</h3>
+                <h3 className="text-3xl font-bold text-[#1769bc] mb-4">Evaluate & Improve</h3>
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Cultivating a culture of accountability supports our vision of instinctual safety. We are duty driven to support team members, provide consistent feedback and training and drive responsibility through education and rewards systems.
                 </p>
@@ -135,13 +135,13 @@ const Safety: React.FC = () => {
 
       {/* A.L.W.A.Y.S. Section */}
       <section className="py-10 sm:py-12 bg-gray-100 px-8 sm:px-12 lg:px-20 xl:px-28 text-center">
-          <h2 className="text-4xl font-bold text-blue-600 mb-4">A.L.W.A.Y.S.</h2>
+          <h2 className="text-4xl font-bold text-[#1769bc] mb-4">A.L.W.A.Y.S.</h2>
           <p className="text-gray-700 text-xl leading-relaxed mb-5">
             We believe that to create a best-in-class safety program, all employees must commit to a core list of safeguards. The safeguards are designed to protect against the most common causes of severe injury. They are foundational to our safety culture.
           </p>
           <button
             onClick={() => setIsAlwaysModalOpen(true)}
-            className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors font-semibold"
+            className="bg-gradient-to-r from-blue-600 to-blue-950 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors font-semibold"
           >
             CLICK TO VIEW
           </button>

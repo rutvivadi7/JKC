@@ -50,13 +50,13 @@ const ServicesSection: React.FC = () => {
           {/* Wireline Construction */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('wireline')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc10.jpg'}
               alt="Wireline Construction"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Wireline Construction</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Wireline Construction</h3>
             </div>
 
             {/* Hover Description */}
@@ -71,13 +71,13 @@ const ServicesSection: React.FC = () => {
           {/* Wireless Construction */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('wireless')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_2}
+              src={'/images/gallery/jkc18.png'}
               alt="Wireless Construction"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Wireless Construction</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Wireless Construction</h3>
             </div>
 
             {/* Hover Description */}
@@ -92,13 +92,13 @@ const ServicesSection: React.FC = () => {
           {/* Locating */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('locating')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_3}
+              src={'/images/gallery/jkc19.png'}
               alt="Locating"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Locating</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Locating</h3>
             </div>
 
             {/* Hover Description */}
@@ -116,13 +116,13 @@ const ServicesSection: React.FC = () => {
           {/* Engineering */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('engineering')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc20.png'}
               alt="Engineering"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Engineering</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Engineering</h3>
             </div>
 
             {/* Hover Description */}
@@ -137,13 +137,13 @@ const ServicesSection: React.FC = () => {
           {/* Fulfillment */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('fulfillment')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_2}
+              src={'images/gallery/jkc21.png'}
               alt="Fulfillment"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Fulfillment</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Fulfillment</h3>
             </div>
 
             {/* Hover Description */}
@@ -158,13 +158,13 @@ const ServicesSection: React.FC = () => {
           {/* Maintenance & Restoration */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('maintenance')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_3}
+              src={'images/gallery/jkc22.png'}
               alt="Maintenance & Restoration"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Maintenance & Restoration</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Maintenance & Restoration</h3>
             </div>
 
             {/* Hover Description */}
@@ -179,13 +179,13 @@ const ServicesSection: React.FC = () => {
           {/* Project Management */}
           <div className="relative group cursor-pointer overflow-hidden rounded-2xl" onClick={() => handleServiceClick('project-management')}>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc23.jpeg'}
               alt="Project Management"
               className="w-full h-96 sm:h-[480px] object-cover group-hover:scale-125 transition-all duration-[5000ms] ease-linear transform-gpu"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-4 left-4 text-white group-hover:opacity-0 transition-opacity duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Project Management</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-2">Project Management</h3>
             </div>
 
             {/* Hover Description */}

@@ -11,17 +11,17 @@ const ProjectManagement: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center px-6">
+      <section className="relative h-[50vh] flex items-center justify-center px-6">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={'images/gallery/jkc48.png'}
             alt="Project management"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto text-left text-white px-4 sm:px-6 lg:px-8 mt-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Project Management</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Project Management</h1>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ const ProjectManagement: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="bg-white flex items-center">
             <div className="px-8 sm:px-10 lg:px-14 py-5 sm:py-6">
-              <h2 className="text-4xl font-bold text-blue-600 mb-6">Turnkey Project Management</h2>
+              <h2 className="text-4xl font-bold text-[#1769bc] mb-6">Turnkey Project Management</h2>
               <p className="text-gray-700 text-xl leading-relaxed mb-6">
                 From the smallest town to the largest city, we manage telecommunications projects that connect India. We engineer all types of networks from fiber to 5G, perform locates prior to excavation, obtain permits before work begins, and construct and maintain high quality and dependable networks.
               </p>
@@ -41,7 +41,7 @@ const ProjectManagement: React.FC = () => {
           </div>
           <div className="relative flex items-center pt-12" style={{height: '600px'}}>
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc47.jpeg'}
               alt="Project Management"
               className="w-full object-cover"
               style={{height: '460px'}}

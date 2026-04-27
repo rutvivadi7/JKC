@@ -11,17 +11,17 @@ const WirelineConstruction: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[50vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={'images/gallery/jkc30.png'}
             alt="Wireline construction work"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto text-left text-white px-6 mt-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Wireline Construction</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Wireline Construction</h1>
         </div>
       </section>
 
@@ -46,24 +46,12 @@ const WirelineConstruction: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex items-end" style={{height: '480px'}}>
-            <video 
-              className="w-full object-cover"
-              style={{height: '340px'}}
-              controls
-              preload="metadata"
-              poster={IMAGES.GALLERY.CONSTRUCTION_3}
-            >
-              <source src="/videos/Wireline Construction/video1.mp4" type="video/mp4" />
-              <track 
-                kind="subtitles" 
-                src="/videos/Wireline Construction/video1.vtt" 
-                srcLang="en" 
-                label="English"
-                default
-              />
-              Your browser does not support the video tag.
-            </video>
+          <div className="relative flex items-end" style={{height: '610px'}}>
+            <img
+              src={'images/gallery/jkc31.png'}
+              alt="Outside Plant Construction"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute bottom-6 left-6 text-white pointer-events-none">
               <h3 className="text-3xl font-bold">Outside Plant</h3>
               <h3 className="text-3xl font-bold">Construction</h3>
@@ -77,7 +65,7 @@ const WirelineConstruction: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_5}
+              src={'images/gallery/jkc30.png'}
               alt="Underground Construction"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -93,7 +81,7 @@ const WirelineConstruction: React.FC = () => {
               <h2 className="text-4xl font-bold text-green-600 mb-6">Underground</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <ul className="text-gray-700 space-y-2 text-base">
+                  <ul className="text-gray-700 space-y-2 text-lg">
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Conduit and Manhole Construction</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Trenching / Plowing</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Horizontal Directional Drilling</span></li>
@@ -103,7 +91,7 @@ const WirelineConstruction: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <ul className="text-gray-700 space-y-2 text-base">
+                  <ul className="text-gray-700 space-y-2 text-lg">
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Trenching</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Cable Blowing / Pulling</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Fiber/Cable Splicing</span></li>
@@ -133,14 +121,14 @@ const WirelineConstruction: React.FC = () => {
               <h2 className="text-4xl font-bold text-green-600 mb-6">Aerial</h2>
               <div className="grid md:grid-cols-2 gap-10">
                 <div>
-                  <ul className="text-base text-gray-700 space-y-3">
+                  <ul className="text-lg text-gray-700 space-y-3">
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Aerial Construction</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Make Ready</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Fiber and Copper Cable</span></li>
                   </ul>
                 </div>
                 <div>
-                  <ul className="text-base text-gray-700 space-y-3 ">
+                  <ul className="text-lg text-gray-700 space-y-3 ">
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Pole Placement</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Pole Removal</span></li>
                     <li className="flex"><span className="opacity-50 mr-4">—</span><span>Drop Installation</span></li>
@@ -151,7 +139,7 @@ const WirelineConstruction: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_7}
+              src={'images/gallery/jkc33.jpg'}
               alt="Aerial Construction"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -173,7 +161,7 @@ const WirelineConstruction: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_8}
+              src={'images/gallery/jkc9.png'}
               alt="Splicing"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -205,7 +193,7 @@ const WirelineConstruction: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="bg-white flex items-center">
             <div className="px-8 sm:px-10 lg:px-14 py-5 sm:py-6">
-              <h2 className="text-4xl font-bold text-blue-600 mb-6">Inside Plant Construction</h2>
+              <h2 className="text-5xl font-bold text-[#1769bc] mb-6">Inside Plant Construction</h2>
               <p className="text-gray-700 text-xl leading-relaxed">
                 JKC's team has installed voice and data inside plant infrastructure for small, medium, and large-scale projects. We have designed, engineered, and performed numerous telecommunication and data center build-outs in campus environments. Our technicians are certified in LAN & WAN network configuration and performing moves, adds, and changes (MAC) for voice and data networks.
               </p>
@@ -213,7 +201,7 @@ const WirelineConstruction: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc34.png'}
               alt="Inside Plant Construction"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}

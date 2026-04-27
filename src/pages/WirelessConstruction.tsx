@@ -11,17 +11,17 @@ const WirelessConstruction: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center px-6">
+      <section className="relative h-[50vh] flex items-center justify-center px-6">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={'images/gallery/wireless.jpg'}
             alt="Wireless construction infrastructure"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto text-left text-white px-6 mt-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Wireless Construction</h1>
+        <div className="relative z-10 text-white mt-16 px-8 sm:px-12 lg:px-20 xl:px-28">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Wireless Construction</h1>
         </div>
       </section>
 
@@ -42,24 +42,12 @@ const WirelessConstruction: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="relative flex items-center pt-20" style={{height: '480px'}}>
-            <video 
-              className="w-full object-cover"
-              style={{height: '340px'}}
-              controls
-              preload="metadata"
-              poster={IMAGES.GALLERY.CONSTRUCTION_1}
-            >
-              <source src="/videos/Wireless Construction/video1.mp4" type="video/mp4" />
-              <track 
-                kind="subtitles" 
-                src="/videos/Wireless Construction/video1.vtt" 
-                srcLang="en" 
-                label="English"
-                default
-              />
-              Your browser does not support the video tag.
-            </video>
+          <div className="relative flex items-center pt-15" style={{height: '450px'}}>
+            <img
+              src={'images/gallery/jkc36.png'}
+              alt="Wireless Construction"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute bottom-16 left-6 text-white pointer-events-none">
               <h3 className="text-3xl font-bold">Wireless</h3>
               <h3 className="text-3xl font-bold">Construction</h3>
@@ -76,7 +64,7 @@ const WirelessConstruction: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_2}
+              src={'images/gallery/jkc39.png'}
               alt="Cell Site Turnkey Contractor"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -120,7 +108,7 @@ const WirelessConstruction: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_3}
+              src={'images/gallery/jkc37.png'}
               alt="New Site Builds and Site Modifications"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -142,7 +130,7 @@ const WirelessConstruction: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_4}
+              src={'images/gallery/jkc38.png'}
               alt="Small Cell & COW/COLT/NOW Deployments"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -186,7 +174,7 @@ const WirelessConstruction: React.FC = () => {
           </div>
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_5}
+              src={'images/gallery/jkc34.png'}
               alt="Commissioning and Integration"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}

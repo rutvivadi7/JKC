@@ -11,17 +11,17 @@ const Fulfillment: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center px-6">
+      <section className="relative h-[50vh] flex items-center justify-center px-6">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={'images/gallery/jkc46.png'}
             alt="Fulfillment operations"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto text-left text-white px-6 mt-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Fulfillment</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Fulfillment</h1>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ const Fulfillment: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="bg-white flex items-center">
             <div className="px-8 sm:px-10 lg:px-14 py-5 sm:py-6">
-              <h2 className="text-4xl font-bold text-blue-600 mb-6">Installation and Fulfillment</h2>
+              <h2 className="text-4xl font-bold text-[#1769bc] mb-6">Installation and Fulfillment</h2>
               <p className="text-gray-700 text-xl leading-relaxed mb-6">
                 JKC provides fulfillment services including complete in-home and drop installations, as well as repair and maintenance of broadband networks. Our highly trained employees deliver service to customers quickly, professionally, and consistently.
               </p>
@@ -40,24 +40,15 @@ const Fulfillment: React.FC = () => {
             </div>
           </div>
           <div className="relative flex items-center pt-12" style={{height: '520px'}}>
-            <video 
-              className="w-full object-cover"
-              style={{height: '380px'}}
-              controls
-              preload="metadata"
-              poster={IMAGES.GALLERY.CONSTRUCTION_1}
-            >
-              <source src="/videos/Fulfillment/video1.mp4" type="video/mp4" />
-              <track 
-                kind="subtitles" 
-                src="/videos/Fulfillment/video1.vtt" 
-                srcLang="en" 
-                label="English"
-                default
-              />
-              Your browser does not support the video tag.
-            </video>
-            <div className="absolute bottom-16 left-6 text-white pointer-events-none">
+            <div className="relative">
+            <img 
+              src={'images/gallery/jkc2.jpeg'}
+              alt="Installation and Fulfillment"
+              className="w-full h-full object-cover"
+              style={{minHeight: '400px'}}
+            />
+          </div>
+            <div className="absolute bottom-5 left-6 text-white pointer-events-none">
               <h3 className="text-3xl font-bold">Installation</h3>
               <h3 className="text-3xl font-bold">and Fulfillment</h3>
             </div>

@@ -11,23 +11,23 @@ const OurCompany: React.FC = () => {
       <Header isTransparent={true} />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[50vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img
-            src={IMAGES.GALLERY.CONSTRUCTION_6}
+            src={'images/gallery/companyprofilebg.png'}
             alt="Our company building"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 text-white mt-16 px-8 sm:px-12 lg:px-20 xl:px-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Our Company</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Our Company</h1>
         </div>
       </section>
 
       {/* Accelerating Speed Section */}
       <section className="py-10 sm:py-14 bg-white px-8 sm:px-12 lg:px-20 xl:px-28">
-        <h2 className="text-4xl font-bold text-blue-600 mb-4">Accelerating speed and capacity</h2>
+        <h2 className="text-4xl font-bold text-[#1769bc] mb-4">Accelerating speed and capacity</h2>
         <p className="text-gray-700 text-xl leading-loose">
           Our reach is built on deep relationships with leading service providers and a strong network of trusted partners across multiple regions. Intensely focused on safety and quality, our teams are always ready with skilled personnel, modern equipment, and the right tooling for every job.
         </p>
@@ -40,7 +40,7 @@ const OurCompany: React.FC = () => {
       <section className="py-12 sm:py-16 bg-white px-8 sm:px-12 lg:px-20 xl:px-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <h2 className="text-4xl font-bold text-blue-600">Company Profile</h2>
+            <h2 className="text-4xl font-bold text-[#1769bc]">Company Profile</h2>
             <p className="text-gray-700 text-xl leading-loose">
               Jay Krishna Construction stands as a beacon of excellence in India's construction industry. With over 27+ years of experience, we have established ourselves as a premier construction company specializing in infrastructure development, residential projects, and commercial construction. Headquartered in Surat, Gujarat, we specialize in infrastructure development, residential projects, and commercial construction — delivering quality-driven solutions across multiple states.
             </p>
@@ -50,9 +50,9 @@ const OurCompany: React.FC = () => {
           </div>
           <div>
             <img
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkcoffice.png'}
               alt="Construction work in progress"
-              className="w-full h-[480px] object-cover rounded-2xl shadow-xl"
+              className="w-full h-[525px] object-cover rounded-2xl shadow-xl"
             />
           </div>
         </div>

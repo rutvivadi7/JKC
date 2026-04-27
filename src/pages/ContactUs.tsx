@@ -96,17 +96,17 @@ const ContactUs: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[55vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img 
-            src={IMAGES.GALLERY.CONSTRUCTION_3}
+            src={'images/gallery/jkc59.png'}
             alt="Contact Us"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto text-left text-white px-6 mt-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Contact Us</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Contact Us</h1>
         </div>
       </section>
 

@@ -11,17 +11,17 @@ const Engineering: React.FC = () => {
       <Header isTransparent={true} />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-start">
+      <section className="relative h-[50vh] flex items-center justify-start">
         <div className="absolute inset-0">
           <img
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={'images/gallery/jkc40.png'}
             alt="Engineering"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-600/80 to-slate-800/80"></div>
+          <div className="absolute inset-0 bg-gray-400/60"></div>
         </div>
         <div className="relative z-10 text-white mt-16 px-8 sm:px-12 lg:px-20 xl:px-28">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">Engineering</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Engineering</h1>
         </div>
       </section>
 
@@ -30,7 +30,7 @@ const Engineering: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="bg-white flex items-center">
             <div className="px-8 sm:px-10 lg:px-14 py-5 sm:py-6">
-              <h2 className="text-4xl font-bold text-blue-600 mb-6">Effective Telecom Design</h2>
+              <h2 className="text-4xl font-bold text-[#1769bc] mb-6">Effective Telecom Design</h2>
               <p className="text-gray-700 text-xl leading-relaxed mb-6">
                 Creating networks of any scale requires a talent for effective design. JKC's engineers are equipped with state-of-the-art geospatial engineering tools that ensure all the critical needs of a telecom network are met.
               </p>
@@ -44,10 +44,10 @@ const Engineering: React.FC = () => {
           </div>
           <div className="relative flex items-end pt-16" style={{height: '480px'}}>
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_1}
+              src={'images/gallery/jkc41.png'}
               alt="Effective Telecom Design"
               className="shadow-xl w-full object-cover"
-              style={{height: '420px'}}
+              style={{height: '480px'}}
             />
           </div>
         </div>
@@ -61,7 +61,7 @@ const Engineering: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative">
             <img 
-              src={IMAGES.GALLERY.CONSTRUCTION_3}
+              src={'images/gallery/jkc42.png'}
               alt="Engineering Work"
               className="w-full h-full object-cover"
               style={{minHeight: '400px'}}
@@ -69,12 +69,12 @@ const Engineering: React.FC = () => {
           </div>
           <div className="bg-white flex items-center">
             <div className="px-8 sm:px-10 lg:px-14 py-5 sm:py-6">
-              <h2 className="text-4xl font-bold text-blue-600 mb-6">In the Office</h2>
+              <h2 className="text-4xl font-bold text-[#1769bc] mb-6">In the Office</h2>
               <p className="text-gray-700 text-xl leading-relaxed mb-8">
                 Our in-house engineering teams work across the nation to design elegant and sustainable networks. They coordinate with authorities in any municipality to organize permitting and field teams to aid site acquisition and selection.
               </p>
               
-              <h2 className="text-4xl font-bold mb-6" style={{color: '#1769bc'}}>In the Field</h2>
+              <h2 className="text-4xl font-bold text-[#1769bc] mb-6">In the Field</h2>
               <p className="text-gray-700 text-xl leading-relaxed">
                 Our field engineers coordinate with our logistics and program management teams to ensure construction that meets all our customers' specifications and timelines.
               </p>
