@@ -33,11 +33,39 @@ app.use(rateLimit({
 }));
 
 // ─── CORS ──────────────────────────────────────────────────────────────────
-const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173').split(',');
+// ─── CORS ──────────────────────────────────────────────────────────────────
+import cors from 'cors';
+
+// Fallback origins (in case env is missing)
+const fallbackOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://www.jaykrishnaconstruction.in',
+  'https://jaykrishnaconstruction.in',
+  'https://jkc-mct1-git-main-rutvi-vadis-projects.vercel.app',
+  'https://jkc-mct1-oe3x18y4c-rutvi-vadis-projects.vercel.app'
+];
+
+// Read from ENV and clean spaces
+const allowedOrigins = (process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
+// Use env if exists, otherwise fallback
+const finalOrigins = allowedOrigins.length > 0 ? allowedOrigins : fallbackOrigins;
+
 app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error('Not allowed by CORS'));
+  origin: (origin, callback) => {
+    // Allow requests like Postman or server-to-server (no origin)
+    if (!origin) return callback(null, true);
+
+    if (finalOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    console.log("❌ Blocked by CORS:", origin);
+    return callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
 }));
@@ -83,7 +111,7 @@ app.use((err, req, res, _next) => {
 app.listen(PORT, () => {
   console.log(`🚀 JKC Backend running on port ${PORT}`);
   console.log(`📍 Environment : ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🌐 CORS allowed: ${allowedOrigins.join(', ')}`);
+  console.log(`🌐 CORS allowed: ${finalOrigins.join(', ')}`);
 });
 
 export default app;
