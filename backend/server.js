@@ -33,10 +33,6 @@ app.use(rateLimit({
 }));
 
 // ─── CORS ──────────────────────────────────────────────────────────────────
-// ─── CORS ──────────────────────────────────────────────────────────────────
-import cors from 'cors';
-
-// Fallback origins (in case env is missing)
 const fallbackOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
@@ -46,7 +42,7 @@ const fallbackOrigins = [
   'https://jkc-mct1-oe3x18y4c-rutvi-vadis-projects.vercel.app'
 ];
 
-// Read from ENV and clean spaces
+
 const allowedOrigins = (process.env.CORS_ORIGIN || '')
   .split(',')
   .map(origin => origin.trim())
