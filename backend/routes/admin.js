@@ -1,5 +1,7 @@
 import express from 'express';
 import { body, param, validationResult } from 'express-validator';
+import fs   from 'fs';                            // ← NEW
+import path from 'path';                          // ← NEW
 import pool from '../db.js';
 import authMiddleware from '../middleware/auth.js';
 
@@ -17,9 +19,9 @@ const validate = (req, res) => {
   return true;
 };
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 // Dashboard stats
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 router.get('/stats', async (req, res) => {
   try {
     const [[contacts]]  = await pool.query('SELECT COUNT(*) AS total, SUM(status="new") AS new_count FROM contact_submissions');
@@ -46,9 +48,9 @@ router.get('/stats', async (req, res) => {
   }
 });
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 // Contact submissions  (read + status update)
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 router.get('/contact-submissions', async (req, res) => {
   try {
     const [rows] = await pool.query(
@@ -78,9 +80,9 @@ router.patch('/contact-submissions/:id/status',
   }
 );
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 // Talent network submissions  (read + status update)
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 router.get('/talent-network', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM talent_network ORDER BY created_at DESC LIMIT 500');
@@ -108,9 +110,9 @@ router.patch('/talent-network/:id/status',
   }
 );
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Resume uploads  (read + status update)
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
+// Resume uploads  (read + status update + DELETE)
+// ────────────────────────────────────────────────────────────────────────────
 router.get('/resumes', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM resume_uploads ORDER BY created_at DESC LIMIT 500');
@@ -138,9 +140,57 @@ router.patch('/resumes/:id/status',
   }
 );
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ─── NEW: DELETE /api/admin/resumes/:id ──────────────────────────────────
+router.delete('/resumes/:id',
+  [param('id').isInt({ min: 1 })],
+  async (req, res) => {
+    if (!validate(req, res)) return;
+
+    try {
+      // 1. Fetch the row so we know the physical file name
+      const [[resume]] = await pool.query(
+        'SELECT file_name FROM resume_uploads WHERE id = ?',
+        [req.params.id]
+      );
+
+      if (!resume) {
+        return res.status(404).json({ success: false, message: 'Resume not found.' });
+      }
+
+      // 2. Delete DB record first
+      const [result] = await pool.query(
+        'DELETE FROM resume_uploads WHERE id = ?',
+        [req.params.id]
+      );
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ success: false, message: 'Resume not found.' });
+      }
+
+      // 3. Delete physical file (non-blocking — DB record already removed)
+      const uploadsDir = path.resolve(process.env.UPLOAD_PATH || './uploads');
+      const safeName   = path.basename(resume.file_name);   // prevent traversal
+      const filePath   = path.join(uploadsDir, safeName);
+
+      fs.unlink(filePath, (unlinkErr) => {
+        if (unlinkErr && unlinkErr.code !== 'ENOENT') {
+          // Log but don't fail the response — DB row is already gone
+          console.warn(`Could not delete file ${filePath}:`, unlinkErr.message);
+        }
+      });
+
+      res.json({ success: true, message: 'Resume deleted successfully.' });
+    } catch (err) {
+      console.error('Delete resume error:', err);
+      res.status(500).json({ success: false, message: 'Failed to delete resume.' });
+    }
+  }
+);
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ────────────────────────────────────────────────────────────────────────────
 // Clients  — full CRUD
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 const clientValidation = [
   body('name').trim().isLength({ min: 2, max: 100 }).withMessage('Name must be 2–100 characters.'),
   body('email').isEmail().normalizeEmail().withMessage('Valid email required.'),
@@ -203,9 +253,9 @@ router.delete('/clients/:id', [param('id').isInt({ min: 1 })], async (req, res) 
   }
 });
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 // Projects  — full CRUD
-// ═══════════════════════════════════════════════════════════════════════════
+// ────────────────────────────────────────────────────────────────────────────
 const projectValidation = [
   body('title').trim().isLength({ min: 2, max: 200 }).withMessage('Title must be 2–200 characters.'),
   body('client').trim().isLength({ min: 2, max: 200 }).withMessage('Client must be 2–200 characters.'),

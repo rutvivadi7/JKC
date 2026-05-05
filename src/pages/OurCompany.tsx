@@ -42,7 +42,7 @@ const OurCompany: React.FC = () => {
           <div className="space-y-8">
             <h2 className="text-4xl font-bold text-[#1769bc]">Company Profile</h2>
             <p className="text-gray-700 text-xl leading-loose">
-              Jay Krishna Construction stands as a beacon of excellence in India's construction industry. With over 27+ years of experience, we have established ourselves as a premier construction company specializing in infrastructure development, residential projects, and commercial construction. Headquartered in Surat, Gujarat, we specialize in infrastructure development, residential projects, and commercial construction — delivering quality-driven solutions across multiple states.
+              Jay Krishna Construction stands as a beacon of excellence in India's construction industry. With over 27+ years of experience, we have established ourselves as a premier construction company specializing in communication infrastructure development. Headquartered in Surat, Gujarat — delivering quality-driven solutions across multiple states.
             </p>
             <p className="text-gray-700 text-xl leading-loose">
               At JKC, we don't just build structures — we build lasting relationships. Every project we undertake reflects our dedication to excellence, integrity, and craftsmanship that stands the test of time.

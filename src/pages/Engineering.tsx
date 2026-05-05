@@ -76,7 +76,7 @@ const Engineering: React.FC = () => {
               
               <h2 className="text-4xl font-bold text-[#1769bc] mb-6">In the Field</h2>
               <p className="text-gray-700 text-xl leading-relaxed">
-                Our field engineers coordinate with our logistics and program management teams to ensure construction that meets all our customers' specifications and timelines.
+                Our field engineers coordinate with our program management teams to ensure construction that meets all our customers' specifications and timelines.
               </p>
             </div>
           </div>

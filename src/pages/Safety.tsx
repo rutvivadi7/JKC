@@ -50,7 +50,7 @@ const Safety: React.FC = () => {
                 (SMS)
               </h3>
               <p className="text-lg mb-8 leading-relaxed">
-                Headway, JKC's SMS, is the preferred path when mitigating risk on the job. Our multi-step strategy and intensive training empowers all our workforce to recognize and enforce instinctive safety techniques.
+                JKC's SMS, is the preferred path when mitigating risk on the job. Our multi-step strategy and intensive training empowers all our workforce to recognize and enforce instinctive safety techniques.
               </p>
               <div className="flex justify-center mb-4">
                 <img 
@@ -70,7 +70,7 @@ const Safety: React.FC = () => {
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Our executive and managerial leadership demonstrate their commitment to our safety program and supporting initiatives through various tools and actions, for example:
                 </p>
-                <ul className="text-gray-700 space-y-1 text-base">
+                <ul className="text-gray-700 space-y-1 text-lg">
                   <li>• Executive safety committee</li>
                   <li>• Monthly safety calls and annual safety management conferences</li>
                   <li>• Budget and resource allocation</li>
@@ -88,7 +88,7 @@ const Safety: React.FC = () => {
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Effective, consistent and deliberate communication is a critical component of our safety program. As an integral part of our safety process, all our team members, whether in the office or in the field, are required to undergo mandatory safety training. They are actively engaged in training, reporting and auditing safety programs and protocols daily.
                 </p>
-                <ul className="text-gray-700 space-y-1 text-base">
+                <ul className="text-gray-700 space-y-1 text-lg">
                   <li>• Short-Service Employee Program</li>
                   <li>• Training Network, our enterprise resource sharing program</li>
                   <li>• Safety non-negotiables, foundational to our safety culture</li>
@@ -97,7 +97,6 @@ const Safety: React.FC = () => {
                   <li>• Feedback loop, dedicated hotline</li>
                   <li>• Consistent communications and routine meetings</li>
                   <li>• Pulse Surveys</li>
-                  <li>• Headway Recognition Program</li>
                 </ul>
               </div>
             </div>
@@ -120,7 +119,7 @@ const Safety: React.FC = () => {
                 <p className="text-gray-700 mb-3 text-xl leading-relaxed">
                   Cultivating a culture of accountability supports our vision of instinctual safety. We are duty driven to support team members, provide consistent feedback and training and drive responsibility through education and rewards systems.
                 </p>
-                <ul className="text-gray-700 space-y-1 text-base">
+                <ul className="text-gray-700 space-y-1 text-lg">
                   <li>• Job Safety Observation (JSO)</li>
                   <li>• SMS Improvement Plan ensure continuous improvement of the safety programs</li>
                   <li>• Task-Based Gap Analysis</li>

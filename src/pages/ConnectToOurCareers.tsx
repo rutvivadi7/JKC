@@ -49,11 +49,6 @@ const ConnectToOurCareers: React.FC = () => {
                   The values guide us in our dealings with one another, with our customers, and with the 
                   communities where we live.
                 </p>
-                <p className="text-gray-700 text-xl leading-relaxed">
-                  Team members strive to treat each other with respect, value different perspectives and 
-                  experiences; keep our and others' safety at the forefront of our minds, and uphold the 
-                  highest ethical standards.
-                </p>
                 <p className="text-gray-700 mb-6 text-xl leading-relaxed">
                 We prioritize your safety, well-being, and growth with ample support, rewards, and learning opportunities. Our supportive network spans the country, ensuring stable careers for our team while delivering excellent work that connects teams, families and communities.
               </p>
@@ -67,7 +62,7 @@ const ConnectToOurCareers: React.FC = () => {
             
             <div className="relative flex justify-center">
               {/* Professional Values Diagram - Even larger size */}
-              <div className="relative w-full h-[550px]">
+              <div className="relative w-full h-[590px]">
                 <img 
                   src={'images/gallery/jkc53.png'}
                   alt="Jay Krishna Construction Values Diagram"

@@ -59,7 +59,9 @@ router.post('/', contactLimiter, contactValidation, async (req, res) => {
     if (transporter) {
       const emailContent = {
         from:    process.env.EMAIL_FROM || process.env.EMAIL_USER,
-        to:      process.env.EMAIL_TO   || 'jaykrishna.surat@gmail.com',
+        to: (process.env.EMAIL_TO || 'jaykrishna.surat@gmail.com')
+      .split(',')
+      .map(e => e.trim()),
         subject: `New Contact Form Submission #${result.insertId} — ${inquiryType.toUpperCase()}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">

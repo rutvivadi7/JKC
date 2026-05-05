@@ -1,7 +1,9 @@
 // Centralised API client — points to the Express + MySQL backend
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL =
+  (import.meta as ImportMeta & { env: { VITE_API_URL?: string } }).env.VITE_API_URL ||
+  'http://localhost:5000/api';
 
-// ─── Interfaces ────────────────────────────────────────────────────────────
+// ─── Interfaces ──────────────────────────────────────────────────────────────
 
 export interface ContactFormData {
   firstName: string;
@@ -31,7 +33,7 @@ export interface ApiResponse<T = any> {
   errors?: Array<{ field: string; message: string }>;
 }
 
-// ─── API service class ─────────────────────────────────────────────────────
+// ─── API service class ────────────────────────────────────────────────────────
 
 class ApiService {
   private token: string | null = null;
@@ -65,7 +67,7 @@ class ApiService {
     }
   }
 
-  // ── Public endpoints ──────────────────────────────────────────────────
+  // ── Public endpoints ────────────────────────────────────────────────────
 
   healthCheck() {
     return this.makeRequest('/health');
@@ -104,7 +106,7 @@ class ApiService {
     return this.makeRequest<any>(`/careers/jobs/${jobId}`);
   }
 
-  // ── Auth ──────────────────────────────────────────────────────────────
+  // ── Auth ────────────────────────────────────────────────────────────────
 
   async adminLogin(email: string, password: string) {
     const res = await this.makeRequest<{ token: string; user: any }>('/auth/login', {
@@ -142,7 +144,7 @@ class ApiService {
     return this.makeRequest('/auth/me');
   }
 
-  // ── Admin data ────────────────────────────────────────────────────────
+  // ── Admin data ──────────────────────────────────────────────────────────
 
   getAdminStats() {
     return this.makeRequest('/admin/stats');
@@ -171,8 +173,8 @@ class ApiService {
   }
 
   getResumeUploads() {
-  return this.makeRequest<any[]>('/admin/resumes');
-}
+    return this.makeRequest<any[]>('/admin/resumes');
+  }
 
   updateResumeStatus(id: number, status: string) {
     return this.makeRequest(`/admin/resumes/${id}/status`, {
@@ -181,11 +183,17 @@ class ApiService {
     });
   }
 
+  // ── NEW ─────────────────────────────────────────────────────────────────
+  deleteResume(id: number) {
+    return this.makeRequest(`/admin/resumes/${id}`, { method: 'DELETE' });
+  }
+  // ────────────────────────────────────────────────────────────────────────
+
   // Clients
-  getClients()                   { return this.makeRequest<any[]>('/admin/clients'); }
-  createClient(data: any)        { return this.makeRequest('/admin/clients',        { method: 'POST',   body: JSON.stringify(data) }); }
-  updateClient(id: number, d: any){ return this.makeRequest(`/admin/clients/${id}`, { method: 'PUT',    body: JSON.stringify(d)    }); }
-  deleteClient(id: number)       { return this.makeRequest(`/admin/clients/${id}`,  { method: 'DELETE'                             }); }
+  getClients()                    { return this.makeRequest<any[]>('/admin/clients'); }
+  createClient(data: any)         { return this.makeRequest('/admin/clients',        { method: 'POST',   body: JSON.stringify(data) }); }
+  updateClient(id: number, d: any){ return this.makeRequest(`/admin/clients/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
+  deleteClient(id: number)        { return this.makeRequest(`/admin/clients/${id}`,  { method: 'DELETE'                             }); }
 
   // Projects
   getProjects()                    { return this.makeRequest<any[]>('/admin/projects'); }
@@ -194,9 +202,9 @@ class ApiService {
   deleteProject(id: number)        { return this.makeRequest(`/admin/projects/${id}`,   { method: 'DELETE'                             }); }
 
   // Admin job management
-  createJob(data: any)         { return this.makeRequest('/careers/jobs',         { method: 'POST',   body: JSON.stringify(data) }); }
-  updateJob(id: number, d: any){ return this.makeRequest(`/careers/jobs/${id}`,   { method: 'PUT',    body: JSON.stringify(d)    }); }
-  deleteJob(id: number)        { return this.makeRequest(`/careers/jobs/${id}`,   { method: 'DELETE'                             }); }
+  createJob(data: any)          { return this.makeRequest('/careers/jobs',        { method: 'POST',   body: JSON.stringify(data) }); }
+  updateJob(id: number, d: any) { return this.makeRequest(`/careers/jobs/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
+  deleteJob(id: number)         { return this.makeRequest(`/careers/jobs/${id}`,  { method: 'DELETE'                             }); }
 }
 
 export const apiService = new ApiService();

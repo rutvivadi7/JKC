@@ -5,6 +5,12 @@ import {
 } from 'lucide-react';
 import apiService from '../services/api';
 
+declare global {
+  interface ImportMeta {
+    readonly env: Record<string, string>;
+  }
+}
+
 interface ResumeUpload {
   id: number;
   first_name: string;
@@ -68,41 +74,41 @@ interface TalentSubmission {
   created_at: string;
 }
 
-type ClientForm = Pick<Client, 'name' | 'email' | 'phone' | 'company' | 'project' | 'status'>;
+type ClientForm  = Pick<Client,  'name' | 'email' | 'phone' | 'company' | 'project' | 'status'>;
 type ProjectForm = Pick<Project, 'title' | 'client' | 'status' | 'start_date' | 'end_date' | 'budget' | 'description'>;
 
-const BLANK_CLIENT: ClientForm = { name: '', email: '', phone: '', company: '', project: '', status: 'Pending' };
+const BLANK_CLIENT:  ClientForm  = { name: '', email: '', phone: '', company: '', project: '', status: 'Pending' };
 const BLANK_PROJECT: ProjectForm = { title: '', client: '', status: 'Planning', start_date: '', end_date: '', budget: '', description: '' };
 
 const Admin: React.FC = () => {
-  // ── Auth state ──────────────────────────────────────────────────────────
-  const [isLoggedIn, setIsLoggedIn]           = useState(false);
-  const [loggedInUser, setLoggedInUser]       = useState<{ name: string; email: string } | null>(null);
-  const [emailInput, setEmailInput]           = useState('');
-  const [passwordInput, setPasswordInput]     = useState('');
+  // ── Auth state ────────────────────────────────────────────────────────────
+  const [isLoggedIn, setIsLoggedIn]             = useState(false);
+  const [loggedInUser, setLoggedInUser]         = useState<{ name: string; email: string } | null>(null);
+  const [emailInput, setEmailInput]             = useState('');
+  const [passwordInput, setPasswordInput]       = useState('');
   const [showPasswordPage, setShowPasswordPage] = useState(false);
-  const [showPassword, setShowPassword]       = useState(false);
-  const [loginError, setLoginError]           = useState('');
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showPassword, setShowPassword]         = useState(false);
+  const [loginError, setLoginError]             = useState('');
+  const [isTransitioning, setIsTransitioning]   = useState(false);
 
-  // ── UI state ────────────────────────────────────────────────────────────
-  const [activeTab, setActiveTab]             = useState('contacts');
+  // ── UI state ──────────────────────────────────────────────────────────────
+  const [activeTab, setActiveTab]                     = useState('contacts');
   const [showAddClientModal, setShowAddClientModal]   = useState(false);
   const [showAddProjectModal, setShowAddProjectModal] = useState(false);
-  const [editingClient, setEditingClient]     = useState<Client | null>(null);
-  const [editingProject, setEditingProject]   = useState<Project | null>(null);
-  const [newClient, setNewClient]             = useState<ClientForm>(BLANK_CLIENT);
-  const [newProject, setNewProject]           = useState<ProjectForm>(BLANK_PROJECT);
+  const [editingClient, setEditingClient]             = useState<Client | null>(null);
+  const [editingProject, setEditingProject]           = useState<Project | null>(null);
+  const [newClient, setNewClient]                     = useState<ClientForm>(BLANK_CLIENT);
+  const [newProject, setNewProject]                   = useState<ProjectForm>(BLANK_PROJECT);
 
-  // ── Data state ──────────────────────────────────────────────────────────
-  const [clients, setClients]       = useState<Client[]>([]);
-  const [projects, setProjects]     = useState<Project[]>([]);
-  const [contacts, setContacts]     = useState<ContactSubmission[]>([]);
-  const [talents, setTalents]       = useState<TalentSubmission[]>([]);
-  const [loadingData, setLoadingData] = useState(false);
+  // ── Data state ────────────────────────────────────────────────────────────
+  const [clients, setClients]           = useState<Client[]>([]);
+  const [projects, setProjects]         = useState<Project[]>([]);
+  const [contacts, setContacts]         = useState<ContactSubmission[]>([]);
+  const [talents, setTalents]           = useState<TalentSubmission[]>([]);
+  const [resumes, setResumes]           = useState<ResumeUpload[]>([]);
+  const [loadingData, setLoadingData]   = useState(false);
   const [expandedContact, setExpandedContact] = useState<number | null>(null);
   const [contactFilter, setContactFilter]     = useState<string>('all');
-  const [resumes, setResumes] = useState<ResumeUpload[]>([]);
 
   // Restore session on mount
   useEffect(() => {
@@ -114,11 +120,6 @@ const Admin: React.FC = () => {
       setIsLoggedIn(true);
     }
   }, []);
-
-  const handleResumeStatus = async (id: number, status: string) => {
-    const result = await apiService.updateResumeStatus(id, status);
-    if (result.success) setResumes(prev => prev.map(r => r.id === id ? { ...r, status: status as any } : r));
-  };
 
   // Fetch data once logged in
   useEffect(() => {
@@ -132,17 +133,17 @@ const Admin: React.FC = () => {
         apiService.getTalentNetworkSubmissions(),
         apiService.getResumeUploads(),
       ]);
-      if (cr.success) setClients((cr as any).data ?? []);
+      if (cr.success) setClients((cr  as any).data ?? []);
       if (pr.success) setProjects((pr as any).data ?? []);
       if (co.success) setContacts((co as any).data ?? []);
-      if (ta.success) setTalents((ta as any).data ?? []);
-      if (re.success) setResumes((re as any).data ?? []);
+      if (ta.success) setTalents((ta  as any).data ?? []);
+      if (re.success) setResumes((re  as any).data ?? []);
       setLoadingData(false);
     };
     load();
   }, [isLoggedIn]);
 
-  // ── Login flow ───────────────────────────────────────────────────────────
+  // ── Login flow ────────────────────────────────────────────────────────────
   const handleNextClick = (e?: React.MouseEvent | React.KeyboardEvent) => {
     e?.preventDefault();
     if (!emailInput.trim()) { setLoginError('Please enter your email.'); return; }
@@ -180,7 +181,25 @@ const Admin: React.FC = () => {
     setShowPasswordPage(false);
   };
 
-  // ── Client CRUD ──────────────────────────────────────────────────────────
+  // ── Resume handlers ───────────────────────────────────────────────────────
+  const handleResumeStatus = async (id: number, status: string) => {
+    const result = await apiService.updateResumeStatus(id, status);
+    if (result.success) setResumes(prev => prev.map(r => r.id === id ? { ...r, status: status as any } : r));
+  };
+
+  // ── NEW: delete resume ────────────────────────────────────────────────────
+  const handleDeleteResume = async (id: number, originalName: string) => {
+    if (!window.confirm(`Delete resume "${originalName}"?\n\nThis will permanently remove the record and the uploaded file.`)) return;
+    const result = await apiService.deleteResume(id);
+    if (result.success) {
+      setResumes(prev => prev.filter(r => r.id !== id));
+    } else {
+      alert(result.message || 'Failed to delete resume.');
+    }
+  };
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // ── Client CRUD ───────────────────────────────────────────────────────────
   const handleAddClient = async () => {
     if (!newClient.name || !newClient.email || !newClient.phone || !newClient.company || !newClient.project) {
       alert('Please fill in all required fields.'); return;
@@ -214,10 +233,10 @@ const Admin: React.FC = () => {
     if (!confirm('Delete this client?')) return;
     const result = await apiService.deleteClient(id);
     if (result.success) {
-  setClients(prev => prev.filter(c => c.id !== id));
-} else {
-  alert(result.message || 'Failed to delete client.');
-}
+      setClients(prev => prev.filter(c => c.id !== id));
+    } else {
+      alert(result.message || 'Failed to delete client.');
+    }
   };
 
   const openEditClient = (client: Client) => {
@@ -226,7 +245,7 @@ const Admin: React.FC = () => {
     setShowAddClientModal(true);
   };
 
-  // ── Project CRUD ─────────────────────────────────────────────────────────
+  // ── Project CRUD ──────────────────────────────────────────────────────────
   const handleAddProject = async () => {
     if (!newProject.title || !newProject.client || !newProject.start_date || !newProject.end_date || !newProject.budget || !newProject.description) {
       alert('Please fill in all required fields.'); return;
@@ -269,7 +288,7 @@ const Admin: React.FC = () => {
     setShowAddProjectModal(true);
   };
 
-  // ── Contact / Talent status updates ─────────────────────────────────────
+  // ── Contact / Talent status updates ──────────────────────────────────────
   const handleContactStatus = async (id: number, status: string) => {
     const result = await apiService.updateContactStatus(id, status);
     if (result.success) setContacts(prev => prev.map(c => c.id === id ? { ...c, status: status as any } : c));
@@ -292,7 +311,7 @@ const Admin: React.FC = () => {
     return map[status] || 'bg-gray-100 text-gray-800';
   };
 
-  // ── Login screens ────────────────────────────────────────────────────────
+  // ── Login screens ─────────────────────────────────────────────────────────
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-[#f5f7fa] flex items-center justify-center px-4">
@@ -384,7 +403,7 @@ const Admin: React.FC = () => {
     );
   }
 
-  // ── Dashboard ────────────────────────────────────────────────────────────
+  // ── Dashboard ─────────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
@@ -416,11 +435,11 @@ const Admin: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex space-x-8 overflow-x-auto">
             {[
-              { key: 'contacts',  icon: MessageSquare, label: `Contact Submissions${contacts.filter(c => c.status === 'new').length ? ` (${contacts.filter(c => c.status === 'new').length})` : ''}` },
-              { key: 'talents',   icon: UserCheck,     label: 'Talent Network' },
-              { key: 'resumes',   icon: FileText,      label: `Resumes${resumes.filter(r => r.status === 'new').length ? ` (${resumes.filter(r => r.status === 'new').length})` : ''}` },
-              { key: 'clients',   icon: Users,         label: 'Clients' },
-              { key: 'projects',  icon: Briefcase,     label: 'Projects' },
+              { key: 'contacts', icon: MessageSquare, label: `Contact Submissions${contacts.filter(c => c.status === 'new').length ? ` (${contacts.filter(c => c.status === 'new').length})` : ''}` },
+              { key: 'talents',  icon: UserCheck,     label: 'Talent Network' },
+              { key: 'resumes',  icon: FileText,      label: `Resumes${resumes.filter(r => r.status === 'new').length ? ` (${resumes.filter(r => r.status === 'new').length})` : ''}` },
+              { key: 'clients',  icon: Users,         label: 'Clients' },
+              { key: 'projects', icon: Briefcase,     label: 'Projects' },
             ].map(({ key, icon: Icon, label }) => (
               <button key={key} onClick={() => setActiveTab(key)}
                 className={`py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === key ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
@@ -576,14 +595,15 @@ const Admin: React.FC = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    {['Applicant', 'Contact', 'Position', 'Resume File', 'Size', 'Status', 'Date'].map(h => (
+                    {/* ── CHANGED: added "Actions" column ── */}
+                    {['Applicant', 'Contact', 'Position', 'Resume File', 'Size', 'Status', 'Date', 'Actions'].map(h => (
                       <th key={h} className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {resumes.length === 0 ? (
-                    <tr><td colSpan={7} className="px-6 py-10 text-center text-gray-500">No resumes uploaded yet.</td></tr>
+                    <tr><td colSpan={8} className="px-6 py-10 text-center text-gray-500">No resumes uploaded yet.</td></tr>
                   ) : resumes.map(r => (
                     <tr key={r.id} className={r.status === 'new' ? 'bg-blue-50 hover:bg-blue-100' : 'hover:bg-gray-50'}>
                       <td className="px-4 py-3 whitespace-nowrap">
@@ -599,7 +619,8 @@ const Admin: React.FC = () => {
                         <button
                           onClick={async () => {
                             const token = localStorage.getItem('adminToken');
-                            const res = await fetch(`http://localhost:5000/api/upload/files/${r.file_name}`, {
+                            const apiUrl = (import.meta.env as Record<string, string>).VITE_API_URL || 'http://localhost:5000/api';
+                            const res = await fetch(`${apiUrl}/upload/files/${r.file_name}`, {
                               headers: { Authorization: `Bearer ${token}` }
                             });
                             const blob = await res.blob();
@@ -639,6 +660,18 @@ const Admin: React.FC = () => {
                       <td className="px-4 py-3 whitespace-nowrap text-xs text-gray-500">
                         {new Date(r.created_at).toLocaleDateString('en-IN')}
                       </td>
+
+                      {/* ── NEW: Delete button ── */}
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <button
+                          onClick={() => handleDeleteResume(r.id, r.original_name)}
+                          title="Delete resume"
+                          className="inline-flex items-center justify-center w-8 h-8 rounded-md text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </td>
+                      {/* ────────────────────── */}
                     </tr>
                   ))}
                 </tbody>

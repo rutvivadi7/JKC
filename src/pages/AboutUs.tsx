@@ -31,11 +31,9 @@ const AboutUs: React.FC = () => {
             <p className="text-gray-700 text-xl leading-loose">
               JKC (Jay Krishna Construction) is a leading provider of specialty contracting services to
               the telecommunications infrastructure and utility industries throughout the
-              Nation. Since our incorporation in 1969, we have expanded
+              Nation. Since our incorporation in 1998, we have expanded
               our scope and service offerings organically and through acquisitions.
-              Today, JKC is made up of more than 40 operating companies that serve a
-              diverse customer base across all 50 states from hundreds of field offices. Our
-              geographic presence and substantial workforce provide the scale needed to
+              Our geographic presence and substantial workforce provide the scale needed to
               quickly execute on opportunities to service existing and new customers
               throughout urban and rural areas.
             </p>

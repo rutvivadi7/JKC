@@ -204,7 +204,7 @@ const TalentNetwork: React.FC = () => {
     'Compliance & Controls', 'Construction', 'Engineering', 'Fleet Services',
     'Human Resources', 'Information Technology', 'Legal', 'Lineman',
     'Locating', 'Marketing', 'Mechanic', 'Operations Management',
-    'Operator', 'Other', 'Payroll', 'Production', 'Program Management',
+    'Operator', 'Payroll', 'Production', 'Program Management',
     'Project Management', 'Safety', 'Splicing', 'Technician', 'Tower',
     'Warehouse & Materials'
   ];

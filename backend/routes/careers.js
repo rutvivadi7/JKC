@@ -23,6 +23,31 @@ const createTransporter = () => {
   });
 };
 
+// ─── Human-readable label maps ─────────────────────────────────────────────
+const EXPERIENCE_LABELS = {
+  'entry':  'Entry Level (0–1 years)',
+  '1-3':    '1–3 years',
+  '3-5':    '3–5 years',
+  '5-10':   '5–10 years',
+  '10+':    '10+ years',
+};
+
+const AVAILABILITY_LABELS = {
+  'immediate':  'Immediate',
+  '2-weeks':    'Within 2 weeks',
+  '1-month':    'Within 1 month',
+  '3-months':   'Within 3 months',
+};
+
+const CATEGORY_LABELS = {
+  'construction':  'Construction',
+  'engineering':   'Engineering',
+  'management':    'Management',
+  'safety':        'Safety',
+  'operations':    'Operations',
+  'other':         'Other',
+};
+
 const talentValidation = [
   body('firstName').trim().isLength({ min: 2, max: 50 }).withMessage('First name must be 2–50 characters.'),
   body('lastName').trim().isLength({ min: 2, max: 50 }).withMessage('Last name must be 2–50 characters.'),
@@ -54,34 +79,76 @@ router.post('/talent-network', careerLimiter, talentValidation, async (req, res)
 
     const transporter = createTransporter();
     if (transporter) {
+      const adminUrl          = process.env.ADMIN_URL || 'http://localhost:5173/admin';
+      const experienceLabel   = EXPERIENCE_LABELS[experience]   || experience;
+      const availabilityLabel = AVAILABILITY_LABELS[availability] || availability;
+      const categoryLabel     = CATEGORY_LABELS[jobCategory]    || jobCategory;
+
       transporter.sendMail({
         from:    process.env.EMAIL_FROM || process.env.EMAIL_USER,
         to:      process.env.EMAIL_TO   || 'jaykrishna.surat@gmail.com',
-        subject: `New Talent Network Registration #${result.insertId} — ${jobCategory.toUpperCase()}`,
+        subject: `New Talent Network Registration #${result.insertId} — ${categoryLabel} (${firstName} ${lastName})`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
             <div style="background:#059669;color:#fff;padding:20px;text-align:center">
-              <h1 style="margin:0">New Talent Network Registration</h1>
+              <h1 style="margin:0">🧑‍💼 New Talent Network Registration</h1>
             </div>
             <div style="padding:20px;background:#f0fdf4">
               <table style="width:100%;border-collapse:collapse">
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold;width:35%">Name:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${firstName} ${lastName}</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Email:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${email}</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Phone:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${phone}</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Location:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${location}</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Category:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${jobCategory}</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Experience:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${experience} years</td></tr>
-                <tr><td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Availability:</td>
-                    <td style="padding:10px;border-bottom:1px solid #d1fae5">${availability}</td></tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold;width:35%">Submission ID:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">#${result.insertId}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Full Name:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${firstName} ${lastName}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Email:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">
+                    <a href="mailto:${email}" style="color:#059669">${email}</a>
+                  </td>
+                </tr>
+                ${phone ? `
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Phone:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${phone}</td>
+                </tr>` : ''}
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Location:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${location}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Areas of Interest:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${categoryLabel}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Experience:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${experienceLabel}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5;font-weight:bold">Availability:</td>
+                  <td style="padding:10px;border-bottom:1px solid #d1fae5">${availabilityLabel}</td>
+                </tr>
+                <tr>
+                  <td style="padding:10px;font-weight:bold">Submitted:</td>
+                  <td style="padding:10px">${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</td>
+                </tr>
               </table>
-              <p style="margin-top:16px;font-size:13px;color:#047857">
-                Submitted: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
+
+              <div style="margin-top:16px;padding:12px;background:#dcfce7;border-radius:6px;font-size:13px;color:#047857">
+                📎 A separate email will follow with the uploaded resume file.
+              </div>
+
+              <div style="margin-top:24px;text-align:center">
+                <a href="${adminUrl}"
+                   style="background:#059669;color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block">
+                  View in Admin Portal →
+                </a>
+              </div>
+
+              <p style="margin-top:20px;font-size:12px;color:#6b7280;text-align:center">
+                JKC Construction — Talent Network Notification
               </p>
             </div>
           </div>`,
@@ -97,7 +164,7 @@ router.post('/talent-network', careerLimiter, talentValidation, async (req, res)
   }
 });
 
-// ─── GET /api/careers/jobs ────────────────────────────────────────────────
+// ─── GET /api/careers/jobs ─────────────────────────────────────────────────
 router.get('/jobs', async (req, res) => {
   try {
     const [jobs] = await pool.query(
@@ -114,7 +181,7 @@ router.get('/jobs', async (req, res) => {
   }
 });
 
-// ─── GET /api/careers/jobs/:id ────────────────────────────────────────────
+// ─── GET /api/careers/jobs/:id ─────────────────────────────────────────────
 router.get('/jobs/:id', async (req, res) => {
   const jobId = parseInt(req.params.id, 10);
   if (isNaN(jobId)) return res.status(400).json({ success: false, message: 'Invalid job ID.' });
@@ -150,7 +217,7 @@ router.get('/jobs/:id', async (req, res) => {
   }
 });
 
-// ─── Admin-only job management ────────────────────────────────────────────
+// ─── Admin-only job management ─────────────────────────────────────────────
 
 // POST /api/careers/jobs  (create)
 router.post('/jobs', authMiddleware, async (req, res) => {
