@@ -12,7 +12,7 @@ const AboutUs: React.FC = () => {
       <section className="relative h-[50vh] flex items-end justify-start pb-10">
         <div className="absolute inset-0">
           <img
-            src={IMAGES.GALLERY.CONSTRUCTION_1}
+            src={"images/gallery/aboutus.jpeg"}
             alt="About Us"
             className="w-full h-full object-cover"
           />

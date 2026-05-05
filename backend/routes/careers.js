@@ -79,7 +79,7 @@ router.post('/talent-network', careerLimiter, talentValidation, async (req, res)
 
     const transporter = createTransporter();
     if (transporter) {
-      const adminUrl          = process.env.ADMIN_URL || 'http://localhost:5173/admin';
+      const adminUrl          = process.env.ADMIN_URL || 'http://jaykrishnaconstruction.in/admin';
       const experienceLabel   = EXPERIENCE_LABELS[experience]   || experience;
       const availabilityLabel = AVAILABILITY_LABELS[availability] || availability;
       const categoryLabel     = CATEGORY_LABELS[jobCategory]    || jobCategory;

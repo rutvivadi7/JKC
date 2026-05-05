@@ -34,8 +34,6 @@ app.use(rateLimit({
 
 // ─── CORS ──────────────────────────────────────────────────────────────────
 const fallbackOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
   'https://www.jaykrishnaconstruction.in',
   'https://jaykrishnaconstruction.in',
   'https://jkc-mct1-git-main-rutvi-vadis-projects.vercel.app',
@@ -79,7 +77,7 @@ app.get('/api/health', (req, res) => {
     success: true,
     message: 'JKC Backend API is running',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
+    environment: process.env.NODE_ENV || 'production',
   });
 });
 
@@ -106,7 +104,7 @@ app.use((err, req, res, _next) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 JKC Backend running on port ${PORT}`);
-  console.log(`📍 Environment : ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📍 Environment : ${process.env.NODE_ENV || 'production'}`);
   console.log(`🌐 CORS allowed: ${finalOrigins.join(', ')}`);
 });
 

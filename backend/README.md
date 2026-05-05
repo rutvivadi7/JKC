@@ -38,7 +38,7 @@ EMAIL_PASS=your-app-password
 EMAIL_TO=jaykrishna.surat@gmail.com
 
 # Frontend URL
-CORS_ORIGIN=http://localhost:5173
+CORS_ORIGIN=http://jaykrishnaconstruction.in
 ```
 
 ### 3. Start Server
@@ -119,7 +119,7 @@ Update your React frontend to use the backend API:
 
 ```javascript
 // Contact form submission
-const response = await fetch('http://localhost:5000/api/contact', {
+const response = await fetch('http://jaykrishnaconstruction.in/api/contact', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
