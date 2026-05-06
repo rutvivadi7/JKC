@@ -68,46 +68,46 @@ class ApiService {
   // ── Public endpoints ────────────────────────────────────────────────────
 
   healthCheck() {
-    return this.makeRequest('/health');
+    return this.makeRequest('/api/health');
   }
 
   submitContactForm(formData: ContactFormData) {
-    return this.makeRequest('/contact', {
+    return this.makeRequest('/api/contact', {
       method: 'POST',
       body: JSON.stringify(formData),
     });
   }
 
   testEmailConfig() {
-    return this.makeRequest('/contact/test');
+    return this.makeRequest('/api/contact/test');
   }
 
   submitTalentNetwork(data: TalentNetworkData) {
-    return this.makeRequest('/careers/talent-network', {
+    return this.makeRequest('/api/talent-network', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   }
 
   uploadResume(formData: FormData) {
-    return this.makeRequest('/upload/resume', {
+    return this.makeRequest('/api/upload/resume', {
       method: 'POST',
       body: formData,
     });
   }
 
   getJobs() {
-    return this.makeRequest<any[]>('/careers/jobs');
+    return this.makeRequest<any[]>('/api/careers/jobs');
   }
 
   getJobDetails(jobId: number) {
-    return this.makeRequest<any>(`/careers/jobs/${jobId}`);
+    return this.makeRequest<any>(`/api/careers/jobs/${jobId}`);
   }
 
   // ── Auth ────────────────────────────────────────────────────────────────
 
   async adminLogin(email: string, password: string) {
-    const res = await this.makeRequest<{ token: string; user: any }>('/auth/login', {
+    const res = await this.makeRequest<{ token: string; user: any }>('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
@@ -125,57 +125,57 @@ class ApiService {
   }
 
   adminRegister(name: string, email: string, password: string, role = 'admin') {
-    return this.makeRequest('/auth/register', {
+    return this.makeRequest('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify({ name, email, password, role }),
     });
   }
 
   adminChangePassword(currentPassword: string, newPassword: string) {
-    return this.makeRequest('/auth/change-password', {
+    return this.makeRequest('/api/auth/change-password', {
       method: 'POST',
       body: JSON.stringify({ currentPassword, newPassword }),
     });
   }
 
   getAdminMe() {
-    return this.makeRequest('/auth/me');
+    return this.makeRequest('/api/auth/me');
   }
 
   // ── Admin data ──────────────────────────────────────────────────────────
 
   getAdminStats() {
-    return this.makeRequest('/admin/stats');
+    return this.makeRequest('/api/admin/stats');
   }
 
   getContactSubmissions() {
-    return this.makeRequest<any[]>('/admin/contact-submissions');
+    return this.makeRequest<any[]>('/api/admin/contact-submissions');
   }
 
   updateContactStatus(id: number, status: string) {
-    return this.makeRequest(`/admin/contact-submissions/${id}/status`, {
+    return this.makeRequest(`/api/admin/contact-submissions/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
     });
   }
 
   getTalentNetworkSubmissions() {
-    return this.makeRequest<any[]>('/admin/talent-network');
+    return this.makeRequest<any[]>('/api/admin/talent-network');
   }
 
   updateTalentStatus(id: number, status: string) {
-    return this.makeRequest(`/admin/talent-network/${id}/status`, {
+    return this.makeRequest(`/api/admin/talent-network/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
     });
   }
 
   getResumeUploads() {
-    return this.makeRequest<any[]>('/admin/resumes');
+    return this.makeRequest<any[]>('/api/admin/resumes');
   }
 
   updateResumeStatus(id: number, status: string) {
-    return this.makeRequest(`/admin/resumes/${id}/status`, {
+    return this.makeRequest(`/api/admin/resumes/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
     });
@@ -183,26 +183,26 @@ class ApiService {
 
   // ── NEW ─────────────────────────────────────────────────────────────────
   deleteResume(id: number) {
-    return this.makeRequest(`/admin/resumes/${id}`, { method: 'DELETE' });
+    return this.makeRequest(`/api/admin/resumes/${id}`, { method: 'DELETE' });
   }
   // ────────────────────────────────────────────────────────────────────────
 
   // Clients
-  getClients()                    { return this.makeRequest<any[]>('/admin/clients'); }
-  createClient(data: any)         { return this.makeRequest('/admin/clients',        { method: 'POST',   body: JSON.stringify(data) }); }
-  updateClient(id: number, d: any){ return this.makeRequest(`/admin/clients/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
-  deleteClient(id: number)        { return this.makeRequest(`/admin/clients/${id}`,  { method: 'DELETE'                             }); }
+  getClients()                    { return this.makeRequest<any[]>('/api/admin/clients'); }
+  createClient(data: any)         { return this.makeRequest('/api/admin/clients',        { method: 'POST',   body: JSON.stringify(data) }); }
+  updateClient(id: number, d: any){ return this.makeRequest(`/api/admin/clients/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
+  deleteClient(id: number)        { return this.makeRequest(`/api/admin/clients/${id}`,  { method: 'DELETE'                             }); }
 
   // Projects
-  getProjects()                    { return this.makeRequest<any[]>('/admin/projects'); }
-  createProject(data: any)         { return this.makeRequest('/admin/projects',         { method: 'POST',   body: JSON.stringify(data) }); }
-  updateProject(id: number, d: any){ return this.makeRequest(`/admin/projects/${id}`,   { method: 'PUT',    body: JSON.stringify(d)    }); }
-  deleteProject(id: number)        { return this.makeRequest(`/admin/projects/${id}`,   { method: 'DELETE'                             }); }
+  getProjects()                    { return this.makeRequest<any[]>('/api/admin/projects'); }
+  createProject(data: any)         { return this.makeRequest('/api/admin/projects',         { method: 'POST',   body: JSON.stringify(data) }); }
+  updateProject(id: number, d: any){ return this.makeRequest(`/api/admin/projects/${id}`,   { method: 'PUT',    body: JSON.stringify(d)    }); }
+  deleteProject(id: number)        { return this.makeRequest(`/api/admin/projects/${id}`,   { method: 'DELETE'                             }); }
 
   // Admin job management
-  createJob(data: any)          { return this.makeRequest('/careers/jobs',        { method: 'POST',   body: JSON.stringify(data) }); }
-  updateJob(id: number, d: any) { return this.makeRequest(`/careers/jobs/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
-  deleteJob(id: number)         { return this.makeRequest(`/careers/jobs/${id}`,  { method: 'DELETE'                             }); }
+  createJob(data: any)          { return this.makeRequest('/api/careers/jobs',        { method: 'POST',   body: JSON.stringify(data) }); }
+  updateJob(id: number, d: any) { return this.makeRequest(`/api/careers/jobs/${id}`,  { method: 'PUT',    body: JSON.stringify(d)    }); }
+  deleteJob(id: number)         { return this.makeRequest(`/api/careers/jobs/${id}`,  { method: 'DELETE'                             }); }
 }
 
 export const apiService = new ApiService();
