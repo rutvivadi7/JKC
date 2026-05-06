@@ -619,7 +619,7 @@ const Admin: React.FC = () => {
                         <button
                           onClick={async () => {
                             const token = localStorage.getItem('adminToken');
-                            const apiUrl = (import.meta.env as Record<string, string>).VITE_API_URL || 'http://localhost:5000/api';
+                            const apiUrl = (import.meta.env as Record<string, string>).VITE_API_URL;
                             const res = await fetch(`${apiUrl}/upload/files/${r.file_name}`, {
                               headers: { Authorization: `Bearer ${token}` }
                             });
