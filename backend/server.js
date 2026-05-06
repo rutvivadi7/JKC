@@ -32,14 +32,9 @@ app.use(rateLimit({
   message: { success: false, message: 'Too many requests. Please try again later.' },
 }));
 
-// ─── CORS ──────────────────────────────────────────────────────────────────
 const fallbackOrigins = [
-  'https://www.jaykrishnaconstruction.in',
-  'https://jaykrishnaconstruction.in',
-  'https://jkc-mct1-git-main-rutvi-vadis-projects.vercel.app',
-  'https://jkc-mct1-oe3x18y4c-rutvi-vadis-projects.vercel.app'
+  "http://localhost:5173",
 ];
-
 
 const allowedOrigins = (process.env.CORS_ORIGIN || '')
   .split(',')

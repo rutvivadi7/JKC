@@ -1,7 +1,5 @@
-// Centralised API client — points to the Express + MySQL backend
 const API_BASE_URL =
-  (import.meta as ImportMeta & { env: { VITE_API_URL?: string } }).env.VITE_API_URL ||
-  'http://localhost:5000/api';
+  import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // ─── Interfaces ──────────────────────────────────────────────────────────────
 

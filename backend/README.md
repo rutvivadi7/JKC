@@ -130,7 +130,7 @@ const response = await fetch('http://jaykrishnaconstruction.in/api/contact', {
 
 ## Production Deployment
 
-1. Set `NODE_ENV=production`
+1. Set `NODE_ENV=development`
 2. Use a process manager (PM2)
 3. Set up reverse proxy (Nginx)
 4. Configure SSL certificates
